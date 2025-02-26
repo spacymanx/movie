@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Movies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .movies-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .movie-card {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .movie-card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Top 5 Popular Movies</h1>
+    <div class="movies-container" id="movies"></div>
+
+    <script>
+        const API_KEY = '518921a89f081c44e23db36c349730e4'; // Replace with your TMDb API Key
+        const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+
+        async function fetchMovies() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error(`Error: ${response.status}`);
+                const data = await response.json();
+                
+                const movies = data.results.slice(0, 5); // Get top 5 movies
+                
+                const moviesContainer = document.getElementById('movies');
+                moviesContainer.innerHTML = movies.map(movie => `
+                    <div class="movie-card">
+                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                        <h3>${movie.title}</h3>
+                        <p>Release Date: ${movie.release_date}</p>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Failed to fetch movies:', error);
+            }
+        }
+
+        fetchMovies();
+    </script>
+
+</body>
+</html>

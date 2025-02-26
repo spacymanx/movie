@@ -1,0 +1,134 @@
+
+.montserrat- {
+  font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+  font-weight: 466;
+  font-style: normal;
+}
+
+:root {
+  --imageBorderRadius: 8px;
+  --white: #ffffff;
+  --black: #121212;
+  --card_backing: #0d0d0d;
+  --grey: rgb(128,128,128);
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  background: rgb(13,13,13);
+  background: linear-gradient(0deg, rgba(13,13,13,1) 0%, rgba(24,49,41,1) 100%); 
+}
+
+
+h1 {
+  font-family: "Montserrat", serif;
+  color: var(--white);
+  font-size: 30px;
+  font-weight: 300px;
+}
+
+h2 {
+  font-family: "Montserrat", serif;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 300px;
+}
+
+p {
+  font-family: "Montserrat", serif;
+  color: var(--grey);
+  font-size: 10px;
+  font-weight: 50px;
+}
+
+.title {
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+
+
+
+
+/*movie scroller////////////////////////////////////////////////////////////////////*/
+.movie_genre_wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie_scroller {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100vw;
+  align-content: space-between;
+  gap: 20px;
+  min-width: 100%;
+  max-width: var(--maxPrimaryPageWidth);
+  min-height: 355px;
+  overflow-x: scroll;
+  margin-right: 2px;
+}
+
+.movie_scroller::-webkit-scrollbar:horizontal {
+  width: 0;
+}
+
+.cardstyle_movie {
+  background: rgb(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  padding: 5px 5px 10px 5px;
+  border-radius: 10px;
+  border: 0px;
+  transition: all 1s ease-in-out;
+}
+
+.cardstyle_movie:hover {
+  transform: scale(1.2);
+  margin: 0 30px;
+}
+
+.poster_img {
+  width: 150px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+  border-radius: var(--imageBorderRadius);
+  min-height: calc(150px* 1.5);
+  height: calc(180px* 1.2);
+  
+}
+
+/*search bar/////////////////////////////////////////////////////////////////////////////*/
+.search_bar {
+  margin-left: 20px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.search_icon {
+  position: absolute;
+  color: var(--white); /* Icon color set to bright white */
+  top: 8px;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+}
+
+.search {
+  padding: 8px 50px 8px 30px;
+  background: rgba(18, 18, 18, 0.75); /* Darker, semi-transparent background */
+  border: 0px;
+  border-radius: 28px;
+  font-family: "Montserrat", serif;
+  color: var(--white); /* Ensures the text is bright white */
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.search_wrap {
+  display: flex;
+  flex-direction: column;
+}
+
