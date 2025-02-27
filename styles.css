@@ -3,7 +3,7 @@
   font-family: "Montserrat", serif;
   font-optical-sizing: auto;
   font-weight: 466;
-  font-style: normal;
+  font-style: normal:
 }
 
 :root {
@@ -12,6 +12,7 @@
   --black: #121212;
   --card_backing: #0d0d0d;
   --grey: rgb(128,128,128);
+  --loading: #2b3431;
 }
 * {
   margin: 0;
@@ -21,6 +22,8 @@ body {
   height: 100vh;
   background: rgb(13,13,13);
   background: linear-gradient(0deg, rgba(13,13,13,1) 0%, rgba(24,49,41,1) 100%); 
+  overflow: hidden;
+  margin: 10px;
 }
 
 
@@ -36,7 +39,14 @@ h2 {
   color: var(--white);
   font-size: 12px;
   font-weight: 300px;
+  max-width: 150px;
+  max-height: 15.5px;
+  width: 150px; /* Set a width for the container */
+  white-space: nowrap; /* Prevent text from wrapping onto the next line */
+  overflow: hidden; /* Hide the overflowing text */
+  text-overflow: ellipsis; /* Add ellipsis (...) at the end of the overflowing text */
 }
+
 
 p {
   font-family: "Montserrat", serif;
@@ -69,12 +79,13 @@ p {
   min-width: 100%;
   max-width: var(--maxPrimaryPageWidth);
   min-height: 355px;
-  overflow-x: scroll;
   margin-right: 2px;
+  overflow-x: auto;
 }
 
-.movie_scroller::-webkit-scrollbar:horizontal {
-  width: 0;
+.movie_scroller::-webkit-scrollbar {
+  scrollbar-color: #6969dd #e0e0e0;
+  scrollbar-width: thin;
 }
 
 .cardstyle_movie {
@@ -84,6 +95,70 @@ p {
   border-radius: 10px;
   border: 0px;
   transition: all 1s ease-in-out;
+  max-width: 150px;
+}
+
+.cardstyle_movie_loading{
+  background: rgb(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  padding: 5px 5px 10px 5px;
+  border-radius: 10px;
+  border: 0px;
+  transition: all 1s ease-in-out;
+  overflow: hidden;
+}
+
+.cardstyle_movie_loading::before{
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(rgb(255, 255, 255, 0.2),transparent,
+  transparent);
+  animation: animate 3s linear infinite;
+}
+
+.cardstyle_movie_loading::after{
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 10px;
+}
+
+@keyframes animate 
+{
+  0%
+  {
+    transform: translate(-150px,-150px);
+  }
+  25%
+  {
+    transform: translate(0px,-150px);
+  }
+  50%
+  {
+    transform: translate(0px,109.1px);
+  }
+  75%
+  {
+    transform: translate(-150px,109.1px);
+  }
+  100%
+  {
+    transform: translate(-150px,-150px);
+  }
+
+}
+
+.contents_loading{
+  position: relative;
+  z-index: 3;
+  margin-top: 5.6px;
+  background: var(--loading);
+  width: 150px;
+  height: 28.5px;
+  border-radius: var(--imageBorderRadius);
+  
 }
 
 .cardstyle_movie:hover {
@@ -91,13 +166,23 @@ p {
   margin: 0 30px;
 }
 
+
 .poster_img {
   width: 150px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
   border-radius: var(--imageBorderRadius);
   min-height: calc(150px* 1.5);
   height: calc(180px* 1.2);
-  
+}
+
+.movie_img_loading {
+  position: relative;
+  z-index: 3;
+  width: 150px;
+  background: var(--loading);
+  border-radius: var(--imageBorderRadius);
+  min-height: calc(150px* 1.5);
+  height: calc(180px* 1.2);
 }
 
 /*search bar/////////////////////////////////////////////////////////////////////////////*/
@@ -110,20 +195,20 @@ p {
 .search_icon {
   position: absolute;
   color: var(--white); /* Icon color set to bright white */
-  top: 8px;
-  left: 10px;
-  width: 15px;
-  height: 15px;
+  top: 15px;
+  left: 440px;
+  width: 30px;
+  height: 30px;
 }
 
 .search {
-  padding: 8px 50px 8px 30px;
+  padding: 20px 240px 20px 20px;
   background: rgba(18, 18, 18, 0.75); /* Darker, semi-transparent background */
   border: 0px;
   border-radius: 28px;
   font-family: "Montserrat", serif;
   color: var(--white); /* Ensures the text is bright white */
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 300;
 }
 

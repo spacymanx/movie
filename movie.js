@@ -1,6 +1,7 @@
 const API_KEY = '518921a89f081c44e23db36c349730e4'; // Replace with your TMDB API key
 const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+const FORCED_DELAY = 0
 
 // My objective is to:
 // 1. Make request to TMDB to get Popular Movies
@@ -25,7 +26,7 @@ async function fetchMovies() {
         const response = await fetch(API_URL);
 
         // Lets see what we got
-        console.log("HELLO", response);
+       
 
         // I need to inspect the repsonse and obtain the JSON data from it.
         // I do that by called the json() method on the response object.
@@ -33,7 +34,7 @@ async function fetchMovies() {
         const data = await response.json();
 
         // Let's see the data!
-        console.log("HELLO 1", data);
+        
 
         // Wow. This API returns an object with 4 properties. One of them is called results
         // Results is an array that contains ~20 objects.
@@ -47,30 +48,68 @@ async function fetchMovies() {
         // Eg, starting at item 0, I want to split this array at item 5.
         const firstFive = data.results.slice(0, 5) // Get the top 5 movies
         // Let's see the first 5!
-        console.log("HELLO 2", firstFive);
+        
 
         // Now that I have the first five. I want to do MORE than console.log them
         // I want to display them on screen!
         setTimeout(() => {
-            displayMovies(firstFive);
-        }, 1250)
+            displayMovies(firstFive, '#top5_results');
+        },  FORCED_DELAY)
 
     } catch (error) {
         console.error("Failed to fetch and display popular movies", error)
     }
 }
 
+function displayMovies(movies, targetContainer) {
+  // Find the container where we want to inject the movie cards
+  const movieContainer = document.querySelector(targetContainer);
+  // Clear existing content in the container
+  movieContainer.innerHTML = '';
+
+  // Loop through the array of movies
+  movies.forEach(movie => {
+      // Create a new div element for each movie card
+      const movieCard = document.createElement('div');
+      // Add a class to the movie card
+      movieCard.classList.add('cardstyle_movie');
+
+      let imageUrl;
+      // If the movie has a valid poster_path, use it, else use the fallback image
+      if (movie.poster_path && movie.poster_path !== null) {
+          imageUrl = `${IMAGE_BASE_URL}${movie.poster_path}`;
+      } else {
+          imageUrl = 'img/movie_img_loading.svg'; // Fallback image if poster_path is null
+      }
+
+      // Create the HTML structure for the movie card
+      movieCard.innerHTML = `
+          <div class="movie_img">
+              <img class="poster_img" src="${imageUrl}" alt="${movie.title}">
+          </div>
+          <div class="contents">
+              <h2>${movie.title}</h2>
+              <p>${new Date(movie.release_date).toDateString()}</p>
+          </div>
+      `;
+
+      // Append the movie card to the container
+      movieContainer.appendChild(movieCard);
+  });
+}
+
+/*
 // I've written a function called "displayMovies"
 // It's job is to take an array of movies that are provided to it
 // And to prepare some HTML that will then be injected into my movie_scroller.
-function displayMovies(movies) {
+function displayMovies(movies, targetContainer) {
     // We know that "movies" is going to be an array.
 
     // I am first finding the place in my HTML where I want my movies to be injected into.
     // I am using the browsers querySelector method, which lets my find HTML elements by class or by ID.
-    const movieContainer = document.querySelector('.movie_scroller');
+    const movieContainer = document.querySelector(targetContainer);
     // Let's see what I found!
-    console.log("HELLO 3", movieContainer)
+    
 
     // Once I have my movieContainer, I want to clear its content.
     // I can do that by setting its innerHTML to an empty string.
@@ -97,7 +136,7 @@ function displayMovies(movies) {
         // this code will run for every item of my array.
         // and I can access the properties of the current item being inspected
         // by refering to the variable name (nickname) that i gave it of "movie"
-        console.log("HELLO 4", movie.title);
+        
 
         
     })
@@ -108,7 +147,9 @@ function displayMovies(movies) {
         // lets use javascript to put a class name on that brand new DIV
         movieCard.classList.add('cardstyle_movie');
         // Lets see whats it made so far
-        console.log("HELLO 5", movieCard)
+        
+        const imageUrl = movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : '.movie_img_loading'; 
+        
 
         // Right now, my movie card looks like this:
         // <div class="cardstyle_movie"></div>
@@ -131,3 +172,4 @@ function displayMovies(movies) {
         movieContainer.appendChild(movieCard);
     });
 }
+*/

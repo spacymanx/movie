@@ -3,7 +3,6 @@
 
 <head>
   <link rel="stylesheet" href="styles.css">
-  <script src="movie.js"></script> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <title>movie</title>
@@ -18,110 +17,135 @@
       <div class="title">
         <h1>Top Five Movies</h1>
       </div>
-      <div class="movie_scroller">
-        <h3>Loading..</h3>
+      <div id="top5_results" class="movie_scroller">
+        <!--adding a loading animationfor the cards-->
+        <div class="cardstyle_movie_loading">
+          <div class="movie_img_loading">
+          </div>
+          <div class="contents_loading">
+            <div class="h2_loading"></div>
+            <div class="p_loading"></div>
+          </div>
+        </div>
+        <div class="cardstyle_movie_loading">
+          <div class="movie_img_loading">
+          </div>
+          <div class="contents_loading">
+            <div class="h2_loading"></div>
+            <div class="p_loading"></div>
+          </div>
+        </div>
+        <div class="cardstyle_movie_loading">
+          <div class="movie_img_loading">
+          </div>
+          <div class="contents_loading">
+            <div class="h2_loading"></div>
+            <div class="p_loading"></div>
+          </div>
+        </div>
+        <div class="cardstyle_movie_loading">
+          <div class="movie_img_loading">
+          </div>
+          <div class="contents_loading">
+            <div class="h2_loading"></div>
+            <div class="p_loading"></div>
+          </div>
+        </div>
+        <div class="cardstyle_movie_loading">
+          <div class="movie_img_loading">
+          </div>
+          <div class="contents_loading">
+            <div class="h2_loading"></div>
+            <div class="p_loading"></div>
+          </div>
+        </div>
+        
       </div>
     </div>
    
     <div class="search_wrap">
       <div class="search_bar">
-        <img class="search_icon" src="img/search.svg"/>
-        <input class="search" type="text" placeholder="Type To Search..">
+        <img class="search_icon" src="img/search.svg" onclick="handleButtonClick()"/>
+        <input type="text" data-search placeholder="Search for movies..." class="search" id="movie_search">
       </div>
-      <div class="movie_scroller">
-        <div class="cardstyle_movie">
-          <div class="movie_img">
-            <img class="poster_img" src="img/movie_poster.jpg" alt="train to Busan">
+      <div id="search_results" class="movie_scroller">
+        <div id="top5_results" class="movie_scroller">
+          <!--adding a loading animationfor the cards-->
+          <div class="cardstyle_movie_loading">
+            <div class="movie_img_loading">
+            </div>
+            <div class="contents_loading">
+              <div class="h2_loading"></div>
+              <div class="p_loading"></div>
+            </div>
           </div>
-          <div class="contents">
-            <h2>Train to Busan</h2>
-            <p>Jul 29, 2016</p>
+          <div class="cardstyle_movie_loading">
+            <div class="movie_img_loading">
+            </div>
+            <div class="contents_loading">
+              <div class="h2_loading"></div>
+              <div class="p_loading"></div>
+            </div>
           </div>
-        </div>
-        <div class="cardstyle_movie">
-          <div class="movie_img">
-            <img class="poster_img" src="img/movie_poster.jpg" alt="train to Busan">
+          <div class="cardstyle_movie_loading">
+            <div class="movie_img_loading">
+            </div>
+            <div class="contents_loading">
+              <div class="h2_loading"></div>
+              <div class="p_loading"></div>
+            </div>
           </div>
-          <div class="contents">
-            <h2>Train to Busan</h2>
-            <p>Jul 29, 2016</p>
+          <div class="cardstyle_movie_loading">
+            <div class="movie_img_loading">
+            </div>
+            <div class="contents_loading">
+              <div class="h2_loading"></div>
+              <div class="p_loading"></div>
+            </div>
           </div>
-        </div>
-        <div class="cardstyle_movie">
-          <div class="movie_img">
-            <img class="poster_img" src="img/movie_poster.jpg" alt="train to Busan">
+          <div class="cardstyle_movie_loading">
+            <div class="movie_img_loading">
+            </div>
+            <div class="contents_loading">
+              <div class="h2_loading"></div>
+              <div class="p_loading"></div>
+            </div>
           </div>
-          <div class="contents">
-            <h2>Train to Busan</h2>
-            <p>Jul 29, 2016</p>
+
+          <div class="cardstyle_movie_loading">
+            <div class="movie_img_loading">
+            </div>
+            <div class="contents_loading">
+              <div class="h2_loading"></div>
+              <div class="p_loading"></div>
+            </div>
           </div>
-        </div>
-        <div class="cardstyle_movie">
-          <div class="movie_img">
-            <img class="poster_img" src="img/movie_poster.jpg" alt="train to Busan">
+          <div class="cardstyle_movie_loading">
+            <div class="movie_img_loading">
+            </div>
+            <div class="contents_loading">
+              <div class="h2_loading"></div>
+              <div class="p_loading"></div>
+            </div>
           </div>
-          <div class="contents">
-            <h2>Train to Busan</h2>
-            <p>Jul 29, 2016</p>
+          <div class="cardstyle_movie_loading">
+            <div class="movie_img_loading">
+            </div>
+            <div class="contents_loading">
+              <div class="h2_loading"></div>
+              <div class="p_loading"></div>
+            </div>
           </div>
-        </div>
-        <div class="cardstyle_movie">
-          <div class="movie_img">
-            <img class="poster_img" src="img/movie_poster.jpg" alt="train to Busan">
-          </div>
-          <div class="contents">
-            <h2>Train to Busan</h2>
-            <p>Jul 29, 2016</p>
-          </div>
-        </div>
-        <div class="cardstyle_movie">
-          <div class="movie_img">
-            <img class="poster_img" src="img/movie_poster.jpg" alt="train to Busan">
-          </div>
-          <div class="contents">
-            <h2>Train to Busan</h2>
-            <p>Jul 29, 2016</p>
-          </div>
-        </div>
-        <div class="cardstyle_movie">
-          <div class="movie_img">
-            <img class="poster_img" src="img/movie_poster.jpg" alt="train to Busan">
-          </div>
-          <div class="contents">
-            <h2>Train to Busan</h2>
-            <p>Jul 29, 2016</p>
-          </div>
-        </div>
-        <div class="cardstyle_movie">
-          <div class="movie_img">
-            <img class="poster_img" src="img/movie_poster.jpg" alt="train to Busan">
-          </div>
-          <div class="contents">
-            <h2>Train to Busan</h2>
-            <p>Jul 29, 2016</p>
-          </div>
-        </div>
-        <div class="cardstyle_movie">
-          <div class="movie_img">
-            <img class="poster_img" src="img/movie_poster.jpg" alt="train to Busan">
-          </div>
-          <div class="contents">
-            <h2>Train to Busan</h2>
-            <p>Jul 29, 2016</p>
-          </div>
-        </div>
-        <div class="cardstyle_movie">
-          <div class="movie_img">
-            <img class="poster_img" src="img/movie_poster.jpg" alt="train to Busan">
-          </div>
-          <div class="contents">
-            <h2>Train to Busan</h2>
-            <p>Jul 29, 2016</p>
-          </div>
+         
+          
         </div>
       </div>
     </div>
     
   </div>
+
+  <script src="movie.js"></script> 
+  <script src="moviesearch.js"></script> 
+
 </body>
 </html>
